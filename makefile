@@ -2,21 +2,23 @@ CC = gcc
 LD = gcc
 RM = rm -f
 CFLAGS =
-EXECNAME = main
+LFLAGS =
+TARGET = main
 
-SOURCES := $(wildcard *.c)
-OBJECTS := $(patsubst %.c,%.o, $(SOURCES))
+SRCS := $(wildcard *.c)
+OBJS := $(patsubst %.c,%.o, $(SRCS))
 
 all: main
 
-.o:
-	$(CC) -c $(CFLAGS) $<
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
-$(EXECNAME): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(EXECNAME)
+$(TARGET): $(OBJS)
+	$(LD) $^ $(LFLAGS) -o $@
 
 clean:
-	$(RM) $(EXECNAME)
+	$(RM) $(TARGET) $(OBJS)
 
-distclean: clean
-	$(RM) *.o
+compile_commands: clean
+	compiledb make
+
