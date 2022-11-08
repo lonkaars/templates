@@ -8,7 +8,7 @@ TARGET = main
 SRCS := $(wildcard *.c)
 OBJS := $(patsubst %.c,%.o, $(SRCS))
 
-all: main
+all: $(TARGET)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
