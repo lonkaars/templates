@@ -20,5 +20,5 @@ clean:
 	$(RM) $(TARGET) $(OBJS)
 
 compile_commands: clean
-	compiledb make
+	compiledb make -Bn
 
