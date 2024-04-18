@@ -19,6 +19,6 @@ $(TARGET): $(OBJS)
 clean:
 	$(RM) $(TARGET) $(OBJS)
 
-compile_commands:
+compile_commands.json:
 	compiledb make -Bn
 
